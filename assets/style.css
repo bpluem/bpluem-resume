@@ -166,7 +166,9 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---------- 7) โหมดพิมพ์ / บันทึกเป็น PDF ---------- */
-@page { size: A4; margin: 10mm; }
+/* ขอบกระดาษ 8mm — แคบกว่าค่ามาตรฐานเล็กน้อยเพื่อให้เนื้อหาลง 1 หน้าพอดี
+   ยังห่างขอบพอสำหรับเครื่องพิมพ์ทั่วไป (ต่ำกว่า 5mm เสี่ยงโดนตัด) */
+@page { size: A4; margin: 8mm; }
 
 @media print {
   /* บังคับโหมดสว่างเสมอ ไม่งั้นพิมพ์ออกมาพื้นดำเปลืองหมึก */
@@ -231,3 +233,75 @@ a:hover { text-decoration: underline; }
   .avatar { width: 84px; height: 84px; box-shadow: none; border-color: #fff; }
   .avatar-wrap { margin-bottom: 12px; }
 }
+
+/* =============================================================
+   ฉบับ PDF 1 หน้า — ทำงานเมื่อ body มี class "compact"
+   (ปุ่ม PDF ใส่ให้อัตโนมัติตอนพิมพ์ / ทดสอบบนจอด้วย ?compact=1)
+
+   หลักการ: ตัดของที่ "ดูบนเว็บก็พอ" ออก เหลือเฉพาะสิ่งที่ HR
+   ต้องเห็นใน 6 วินาทีแรก แล้วบีบระยะห่างลงให้ลงกระดาษแผ่นเดียว
+   ============================================================= */
+body.compact .item li:not(.key) { display: none; }   /* เก็บเฉพาะข้อที่ติดธง key */
+body.compact .compact-hide,
+body.compact .project-grid,                          /* การ์ดโปรเจคย่อย */
+body.compact .ai-block,                              /* รายละเอียด workflow AI */
+body.compact .item ul:empty,
+body.compact .summary:not(:first-of-type) { display: none; }
+
+/* บีบระยะห่างและขนาดตัวอักษรลง */
+body.compact { font-size: 13px; line-height: 1.45; }
+body.compact .section { margin-bottom: 13px; }
+body.compact .section > h2 { margin-bottom: 7px; padding-bottom: 4px; font-size: 11px; }
+body.compact .item { margin-bottom: 10px; }
+body.compact .item li { margin-bottom: 1px; font-size: 12.5px; }
+body.compact .item-title { font-size: 13.5px; }
+body.compact .item-sub { margin-bottom: 3px; }
+body.compact .group-title { margin: 6px 0 2px; font-size: 12px; }
+body.compact .side { padding-top: 26px; }
+body.compact .side-block { margin-top: 18px; }
+body.compact .skill-group { margin-bottom: 9px; }
+body.compact .tag { font-size: 11px; padding: 2px 7px; }
+body.compact .avatar { width: 62px; height: 62px; border-width: 2px; }
+body.compact .avatar-wrap { margin-bottom: 9px; }
+body.compact .name { font-size: 21px; }
+body.compact .tagline { display: none; }
+body.compact .item::after { display: none; }         /* เส้นไทม์ไลน์ ตัดออกให้โล่ง */
+
+@media print {
+  body.compact { font-size: 9.2pt; line-height: 1.38; }
+  body.compact .sheet { grid-template-columns: 205px 1fr; }
+  body.compact .main { padding-left: 16px; }
+  body.compact .section { margin-bottom: 9px; }
+  body.compact .item { margin-bottom: 7px; }
+}
+
+/* ตัดเพิ่มเพื่อให้ลง 1 หน้าจริง: ย่อหน้าเกริ่นของแต่ละงาน และส่วน AI ทั้งก้อน
+   (ทั้งสองอย่างยังแสดงบนเว็บตามปกติ ตัดเฉพาะในฉบับ PDF 1 หน้า) */
+body.compact .item-intro,
+body.compact .section-ai { display: none; }
+body.compact .item-desc { font-size: 12px; margin-bottom: 5px; }
+
+/* ข้อความ 2 ฉบับ: เว็บใช้ฉบับเต็ม / PDF 1 หน้าใช้ฉบับกระชับ */
+.li-brief { display: none; }
+body.compact .li-full { display: none; }
+body.compact .li-brief { display: inline; }
+
+/* ตัดแท็กเทคโนโลยีในบล็อกโปรเจคออกจาก PDF — ข้อมูลซ้ำกับหัวข้อ Skills
+   ในแถบซ้ายอยู่แล้ว (การ์ดโปรเจคย่อยถูกซ่อนทั้งบล็อกไปก่อนหน้านี้) */
+body.compact .item .tags { display: none; }
+body.compact .item-desc .li-brief { display: block; }
+
+/* ฉบับ PDF: แถบซ้ายคือส่วนที่ยาวเกิน เพราะแท็กสกิล ~29 ตัวเรียงเป็นกล่องละชิ้น
+   เปลี่ยนเป็นข้อความคั่นจุดแทน ประหยัดพื้นที่ได้มากโดยข้อมูลยังครบเท่าเดิม */
+body.compact .side .tags { display: block; line-height: 1.5; }
+body.compact .side .tag {
+  display: inline; background: none; padding: 0; border-radius: 0;
+  font-size: 10.5px; color: var(--text);
+  /* ต้องปลด nowrap ที่ตั้งไว้ตอนเป็นกล่อง ไม่งั้นทั้งบรรทัดตัดคำไม่ได้
+     แล้วล้นออกนอกคอลัมน์ไปทับเนื้อหาฝั่งขวา */
+  white-space: normal;
+}
+body.compact .side .tag::after { content: " · "; color: var(--text-soft); }
+body.compact .side .tag:last-child::after { content: ""; }
+body.compact .side-block { margin-top: 14px; }
+body.compact .skill-group { margin-bottom: 7px; }

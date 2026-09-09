@@ -62,10 +62,22 @@
       items.map(function (s) { return '<span class="tag">' + te(s) + "</span>"; }).join("") +
       "</div>";
   }
+  /* bullet ที่ติดธง key: true จะได้ class "key" — ฉบับ PDF 1 หน้าแสดงเฉพาะพวกนี้ */
   function bulletsHtml(items) {
     if (!items || !items.length) return "";
-    return "<ul>" + items.map(function (b) { return "<li>" + te(b) + "</li>"; }).join("") + "</ul>";
+    return "<ul>" + items.map(function (b) {
+      var isKey = b && typeof b === "object" && b.key === true;
+      var cls = isKey ? "key" : "";
+      /* ข้อที่มี short: จะมี 2 ฉบับซ้อนกัน แล้วให้ CSS เลือกแสดงทีละอัน */
+      if (b && typeof b === "object" && b.short) {
+        return '<li class="' + cls + '"><span class="li-full">' + te(b) +
+               '</span><span class="li-brief">' + te(b.short) + "</span></li>";
+      }
+      return '<li' + (cls ? ' class="' + cls + '"' : "") + ">" + te(b) + "</li>";
+    }).join("") + "</ul>";
   }
+  /* ส่วนที่ตั้ง compact: false จะถูกตัดออกจาก PDF 1 หน้า */
+  function compactClass(o) { return o && o.compact === false ? " compact-hide" : ""; }
 
   /* ---------- แถบซ้าย ---------- */
   function renderSide() {
@@ -95,7 +107,7 @@
     if (R.skillGroups && R.skillGroups.length) {
       h += '<div class="side-block"><h2>' + te(L.skills) + "</h2>";
       R.skillGroups.forEach(function (g) {
-        h += '<div class="skill-group"><h3>' + te(g.group) +
+        h += '<div class="skill-group' + compactClass(g) + '"><h3>' + te(g.group) +
              (g.note ? ' <span class="skill-note">' + te(g.note) + "</span>" : "") +
              "</h3>" + tagsHtml(g.items) + "</div>";
       });
@@ -132,7 +144,7 @@
              "</div>";
         var sub = [t(e.company), t(e.location)].filter(Boolean).map(esc).join(" · ");
         if (sub) h += '<p class="item-sub">' + sub + "</p>";
-        if (e.intro) h += "<p>" + te(e.intro) + "</p>";
+        if (e.intro) h += '<p class="item-intro">' + te(e.intro) + "</p>";
         h += bulletsHtml(e.bullets) + "</div>";
       });
       h += "</section>";
@@ -150,7 +162,11 @@
              (p.period ? '<span class="item-period">' + te(p.period) + "</span>" : "") +
              "</div>";
         if (p.role) h += '<p class="item-sub">' + te(p.role) + "</p>";
-        if (p.description) h += "<p>" + te(p.description) + "</p>";
+        if (p.description) {
+          h += '<p class="item-desc">' + (p.descriptionShort ? '<span class="li-full">' + te(p.description) + "</span>" : te(p.description)) +
+               (p.descriptionShort ? '<span class="li-brief">' + te(p.descriptionShort) + "</span>" : "") +
+               "</p>";
+        }
         h += tagsHtml(p.tags);
         (p.groups || []).forEach(function (g) {
           if (g.title) h += '<h4 class="group-title">' + te(g.title) + "</h4>";
@@ -178,7 +194,7 @@
 
     if (R.aiWorkflow) {
       var a = R.aiWorkflow;
-      h += '<section class="section"><h2>' + te(L.aiWorkflow) + "</h2>";
+      h += '<section class="section section-ai"><h2>' + te(L.aiWorkflow) + "</h2>";
       if (a.intro) h += '<p class="summary">' + te(a.intro) + "</p>";
       h += tagsHtml(a.tools);
       (a.blocks || []).forEach(function (b) {
@@ -192,7 +208,7 @@
     if (R.education && R.education.length) {
       h += '<section class="section"><h2>' + te(L.education) + "</h2>";
       R.education.forEach(function (e) {
-        h += '<div class="item"><div class="item-head">' +
+        h += '<div class="item' + compactClass(e) + '"><div class="item-head">' +
              '<h3 class="item-title">' + te(e.degree) + "</h3>" +
              (e.period ? '<span class="item-period">' + te(e.period) + "</span>" : "") +
              "</div>" +
@@ -252,7 +268,20 @@
 
   /* ---------- ปุ่ม PDF = สั่งพิมพ์ แล้วเลือก "Save as PDF" ----------
      พิมพ์ออกมาเป็นภาษาที่กำลังดูอยู่บนจอ */
+  /* ปุ่ม PDF พิมพ์ "ฉบับ 1 หน้า" — ใส่ class ชั่วคราวเฉพาะตอนพิมพ์
+     ถ้าอยากได้ฉบับเต็มให้กด Cmd+P (หรือ Ctrl+P) ตามปกติแทน */
   document.getElementById("print-btn").addEventListener("click", function () {
+    document.body.classList.add("compact");
     window.print();
   });
+  window.addEventListener("afterprint", function () {
+    document.body.classList.remove("compact");
+  });
+
+  /* พารามิเตอร์ช่วยดูตัวอย่างก่อนพิมพ์ (และใช้ตอนทดสอบอัตโนมัติ)
+       ?compact=1  → ดูฉบับย่อ 1 หน้าบนจอ
+       ?lang=th    → บังคับภาษาโดยไม่ต้องกดปุ่ม */
+  var qsLang = /[?&]lang=(th|en)/.exec(location.search);
+  if (qsLang && qsLang[1] !== lang) { lang = qsLang[1]; render(); }
+  if (/[?&]compact=1/.test(location.search)) document.body.classList.add("compact");
 })();

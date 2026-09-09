@@ -6,6 +6,10 @@
      • ข้อความที่ใช้ร่วมกันได้     → เขียนเป็นข้อความธรรมดาตัวเดียว
        (เช่น ชื่อบริษัท ชื่อเทคโนโลยี ปี พ.ศ./ค.ศ.)
 
+   ปุ่ม PDF จะพิมพ์ "ฉบับ 1 หน้า" ซึ่งแสดงเฉพาะรายการที่ทำเครื่องหมาย key: true
+   (อยากให้ข้อไหนอยู่ใน PDF ก็เติม key: true ในข้อนั้น / เอาออกก็ลบทิ้ง)
+   ส่วนที่ตั้ง compact: false จะถูกตัดออกจาก PDF แต่ยังอยู่บนเว็บ
+
    ที่มา: ~/Downloads/resume_master.md (อัปเดต 2026-09-09)
    ⚠️ ไฟล์นี้อยู่บน GitHub แบบ public — ห้ามใส่ที่อยู่บ้าน วันเกิด เบอร์โทร
    ============================================================= */
@@ -44,13 +48,18 @@ window.RESUME = {
   },
 
   /* ---------- ติดต่อ ----------
-     TODO: เติม LinkedIn (ถ้ามี) — อีเมลใส่แล้ว
      เบอร์โทรตั้งใจไม่ใส่บนเว็บสาธารณะ → ใส่เฉพาะใน PDF ที่ส่งบริษัทโดยตรง */
   contacts: [
     { value: "mister.bongkarn@gmail.com", href: "mailto:mister.bongkarn@gmail.com", icon: "mail" },
     { value: { en: "Nonthaburi, Thailand", th: "นนทบุรี, ประเทศไทย" }, href: null, icon: "pin" },
     { value: "github.com/bpluem", href: "https://github.com/bpluem", icon: "github" },
-    // { value: "linkedin.com/in/xxx", href: "https://linkedin.com/in/xxx", icon: "link" },
+    /* URL จริงมีอักษรไทยที่ถูกเข้ารหัสไว้ (%E0%B8...) — ต้องใช้แบบเข้ารหัสใน href
+       ส่วนข้อความที่แสดงใช้ภาษาไทยปกติเพื่อให้อ่านออก */
+    {
+      value: "linkedin.com/in/บงการ-จงมี",
+      href: "https://www.linkedin.com/in/%E0%B8%9A%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3-%E0%B8%88%E0%B8%87%E0%B8%A1%E0%B8%B5-500221414/",
+      icon: "link",
+    },
   ],
 
   /* ---------- แนะนำตัว (1 รายการ = 1 ย่อหน้า) ---------- */
@@ -96,6 +105,7 @@ window.RESUME = {
       ],
     },
     {
+      compact: false,   /* ตัดออกในฉบับ PDF 1 หน้า */
       group: { en: "Familiar", th: "พอใช้ได้" },
       note:  { en: "can work with, still growing", th: "ใช้ประกอบงานได้ กำลังพัฒนาต่อ" },
       items: [
@@ -121,6 +131,7 @@ window.RESUME = {
       },
       bullets: [
         {
+          key: true,
           en: "Design and develop mobile applications with Flutter and Dart, from UI implementation to release-candidate testing.",
           th: "ออกแบบและพัฒนาแอปมือถือด้วย Flutter และ Dart ตั้งแต่ลงมือทำ UI จนถึงทดสอบเวอร์ชันก่อนปล่อยจริง",
         },
@@ -129,14 +140,17 @@ window.RESUME = {
           th: "สร้างและดูแล UI component ที่ใช้ซ้ำได้ และ design system กลางที่ใช้ทั้งแอป",
         },
         {
+          key: true,
           en: "Integrate REST APIs, including response mapping, error handling, loading/empty states, and retry.",
           th: "เชื่อมต่อ REST API ครอบคลุมการ map ข้อมูล จัดการ error สถานะกำลังโหลด/ไม่มีข้อมูล และการลองใหม่",
         },
         {
+          key: true,
           en: "Implement authentication, authorization, token management, and token refresh flows.",
           th: "ทำระบบยืนยันตัวตน การให้สิทธิ์ การจัดการ token และการต่ออายุ token",
         },
         {
+          key: true,
           en: "Implement role-based access control (RBAC) and permission-driven navigation on the client.",
           th: "ทำระบบคุมสิทธิ์ตามบทบาท (RBAC) และเมนู/เส้นทางในแอปที่เปลี่ยนตามสิทธิ์ผู้ใช้",
         },
@@ -165,6 +179,7 @@ window.RESUME = {
           th: "ทำงานร่วมกับทีมพัฒนาและ DevOps เพื่อคุมคุณภาพตลอดวงจรการพัฒนา",
         },
         {
+          key: true,
           en: "Write and execute test plans and test cases covering functional flows, permissions, and error paths.",
           th: "เขียนและรันแผนทดสอบ/test case ครอบคลุมทั้ง flow การใช้งาน สิทธิ์ผู้ใช้ และกรณีที่เกิดข้อผิดพลาด",
         },
@@ -173,6 +188,7 @@ window.RESUME = {
           th: "ติดตาม บันทึก และจำลองบั๊กในระบบ issue tracking แล้วประสานกับนักพัฒนาจนปิดงานได้",
         },
         {
+          key: true,
           en: "Verify releases on physical devices across every user role rather than on simulators alone.",
           th: "ทดสอบเวอร์ชันที่จะปล่อยบนเครื่องจริงครบทุกบทบาทผู้ใช้ ไม่ใช่แค่บน simulator",
         },
@@ -209,12 +225,18 @@ window.RESUME = {
         en: "Multi-tenant B2B platform for construction quality inspection: Flutter mobile app, web console, and a Go backend. 6+ user roles (inspector, QC manager, PM, subcontractor, CEO, org admin) with per-role permissions, menus, and dashboards.",
         th: "แพลตฟอร์ม B2B แบบ multi-tenant สำหรับตรวจสอบคุณภาพงานก่อสร้าง ประกอบด้วยแอป Flutter เว็บคอนโซล และ backend ภาษา Go รองรับผู้ใช้ 6 บทบาทขึ้นไป (ผู้ตรวจ, QC manager, PM, ผู้รับเหมาช่วง, ผู้บริหาร, แอดมินองค์กร) โดยแต่ละบทบาทมีสิทธิ์ เมนู และแดชบอร์ดของตัวเอง",
       },
+      /* ฉบับกระชับสำหรับ PDF 1 หน้า */
+      descriptionShort: {
+        en: "Multi-tenant B2B platform for construction quality inspection: Flutter app, web console, and Go backend, with 6+ roles each having their own permissions and dashboards.",
+        th: "แพลตฟอร์ม B2B แบบ multi-tenant สำหรับตรวจสอบคุณภาพงานก่อสร้าง มีแอป Flutter เว็บคอนโซล และ backend ภาษา Go รองรับ 6 บทบาทขึ้นไป แต่ละบทบาทมีสิทธิ์และแดชบอร์ดของตัวเอง",
+      },
       tags: ["Flutter", "GetX", "Dio", "Go (chi, pgx, sqlc)", "PostgreSQL", "Keycloak", "Docker"],
       groups: [
         {
           title: { en: "Mobile", th: "ฝั่งมือถือ" },
           bullets: [
             {
+              key: true,
               en: "Rebuilt the role-based dashboard to a new spec across 5 roles via a planned 7-phase migration — 3 shared widgets and 15 cards, with the suite at 302 passing tests.",
               th: "รื้อแดชบอร์ดตามบทบาทใหม่ทั้งหมด 5 บทบาท ตามแผนย้าย 7 เฟส ได้ widget กลาง 3 ตัวและการ์ด 15 ใบ โดยชุดทดสอบผ่านครบ 302 เคส",
             },
@@ -223,10 +245,17 @@ window.RESUME = {
               th: "ตรวจการ์ดบนแดชบอร์ดทุกใบเทียบกับ API จริงครบทุกบทบาท แล้วสรุปรายการช่องว่างส่งให้ทีม backend",
             },
             {
+              key: true,
               en: 'Found a risk-level mapping bug (h/m/l vs the API’s high/medium/low) that silently rendered every project as "low risk" on the executive dashboard.',
               th: "เจอบั๊กการ map ระดับความเสี่ยง (h/m/l กับ high/medium/low ที่ API ส่งมาจริง) ซึ่งทำให้แดชบอร์ดผู้บริหารแสดงทุกโครงการเป็นความเสี่ยงต่ำโดยไม่มีใครรู้",
             },
             {
+              /* ฉบับกระชับสำหรับ PDF 1 หน้า (เว็บยังใช้ข้อความเต็มด้านล่าง) */
+              short: {
+                en: "Closed 18 tracker-reported defects across two cycles, each verified on a physical Android device.",
+                th: "ปิดบั๊กที่ถูกแจ้ง 18 ข้อใน 2 รอบ ตรวจผลบนเครื่อง Android จริงทุกข้อ",
+              },
+              key: true,
               en: "Closed 18 tracker-reported defects across two cycles — OTP entry, resend countdown, leave-confirmation guard, EXIF image rotation, stale image cache — each verified on a physical Android device.",
               th: "ปิดบั๊กที่ถูกแจ้งในระบบติดตาม 18 ข้อ ภายใน 2 รอบ ทั้งช่องกรอก OTP, ตัวนับเวลาขอรหัสใหม่, กันผู้ใช้ออกจากหน้าโดยไม่ตั้งใจ, รูปเอียงจาก EXIF และแคชรูปเก่าค้าง โดยตรวจผลบนเครื่อง Android จริงทุกข้อ",
             },
@@ -251,6 +280,12 @@ window.RESUME = {
           },
           bullets: [
             {
+              /* ฉบับกระชับสำหรับ PDF 1 หน้า (เว็บยังใช้ข้อความเต็มด้านล่าง) */
+              short: {
+                en: "Designed and delivered a menu-management module: a self-referencing menu_groups table, 7 admin endpoints, and a migration that backfilled 31 modules into 11 groups.",
+                th: "ออกแบบและส่งมอบโมดูลจัดการเมนู: ตาราง menu_groups, endpoint แอดมิน 7 ตัว และ migration ย้ายโมดูลเดิม 31 รายการเข้า 11 กลุ่ม",
+              },
+              key: true,
               en: "Designed and delivered a menu-management module: a new self-referencing menu_groups table, 7 admin endpoints, and a migration that backfilled 31 existing modules into 11 groups — deliberately leaving the permission table untouched so the menu/RBAC boundary is enforced by the schema rather than by convention.",
               th: "ออกแบบและส่งมอบโมดูลจัดการเมนู ประกอบด้วยตาราง menu_groups ที่อ้างถึงตัวเอง, endpoint ฝั่งแอดมิน 7 ตัว และ migration ที่ย้ายโมดูลเดิม 31 รายการเข้า 11 กลุ่ม โดยตั้งใจไม่แตะตารางสิทธิ์ เพื่อให้เส้นแบ่งระหว่างเมนูกับ RBAC ถูกบังคับด้วยโครงสร้างฐานข้อมูล ไม่ใช่แค่ข้อตกลงกันเอง",
             },
@@ -287,12 +322,22 @@ window.RESUME = {
         en: "Self-directed web system for condominium administration: units, leases, meter readings, billing, and payment collection. Requirements and architecture complete; implementation starting.",
         th: "ระบบเว็บสำหรับบริหารคอนโดที่ทำเอง ครอบคลุมห้องชุด สัญญาเช่า การจดมิเตอร์ การออกบิล และการเก็บเงิน ตอนนี้ requirement และสถาปัตยกรรมเสร็จแล้ว กำลังเริ่มลงมือเขียน",
       },
+      descriptionShort: {
+        en: "Web system for condominium administration: units, leases, meter readings, billing, and payment collection.",
+        th: "ระบบเว็บบริหารคอนโด ครอบคลุมห้องชุด สัญญาเช่า การจดมิเตอร์ การออกบิล และการเก็บเงิน",
+      },
       tags: ["Go", "PostgreSQL", "Next.js (TypeScript)", "Oracle Cloud (ARM)"],
       groups: [
         {
           title: null,
           bullets: [
             {
+              /* ฉบับกระชับสำหรับ PDF 1 หน้า (เว็บยังใช้ข้อความเต็มด้านล่าง) */
+              short: {
+                en: "Wrote the requirement specification independently and revised it after finding four domain flaws in the first draft, including billing that had to be tied to the unit rather than the lease.",
+                th: "เขียนสเปก requirement เองทั้งหมด แล้วรื้อใหม่หลังพบข้อผิดพลาดเชิงธุรกิจ 4 จุดในร่างแรก เช่น บิลต้องผูกกับห้องไม่ใช่สัญญาเช่า",
+              },
+              key: true,
               en: "Wrote the requirement specification independently and revised it after finding four domain flaws in the first draft — billing had to be tied to the unit rather than the lease, utilities needed per-day proration across tenancy changes, water and electricity both needed per-unit meters, and resident data belonged at building scope.",
               th: "เขียนสเปก requirement เองทั้งหมด แล้วรื้อใหม่หลังพบข้อผิดพลาดเชิงธุรกิจ 4 จุดในร่างแรก คือ บิลต้องผูกกับห้องไม่ใช่สัญญาเช่า, ค่าน้ำค่าไฟต้องคิดตามจำนวนวันเมื่อผู้เช่าเปลี่ยนกลางเดือน, ทั้งน้ำและไฟต้องมีมิเตอร์แยกรายห้อง และข้อมูลผู้พักอาศัยต้องอยู่ในระดับอาคาร",
             },
@@ -425,6 +470,7 @@ window.RESUME = {
       period: { en: "2016 – 2022", th: "2559 – 2565" },
     },
     {
+      compact: false,   /* ตัดออกในฉบับ PDF 1 หน้า */
       degree: { en: "Kantangpittayakorn School", th: "โรงเรียนกันตังพิทยากร" },
       school: null,
       period: { en: "2010 – 2015", th: "2553 – 2558" },
