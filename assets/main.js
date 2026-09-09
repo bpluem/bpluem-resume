@@ -71,6 +71,12 @@
   function renderSide() {
     var L = R.labels, h = "";
 
+    /* รูปโปรไฟล์ — onerror ซ่อนตัวเองถ้ายังไม่มีไฟล์ จะได้ไม่ขึ้นไอคอนรูปแตก */
+    if (R.photo) {
+      h += '<div class="avatar-wrap"><img class="avatar" src="' + esc(R.photo) +
+           '" alt="' + te(R.name) + '" onerror="this.parentNode.remove()" /></div>';
+    }
+
     h += '<p class="name">' + te(R.name) + "</p>";
     if (R.nameEn)  h += '<p class="name-en">' + te(R.nameEn) + "</p>";
     if (R.title)   h += '<p class="role">' + te(R.title) + "</p>";

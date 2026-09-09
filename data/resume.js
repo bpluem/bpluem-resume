@@ -26,6 +26,12 @@ window.RESUME = {
     education:  { en: "Education",                th: "การศึกษา" },
   },
 
+  /* ---------- รูปโปรไฟล์ ----------
+     วางไฟล์ไว้ที่ assets/profile.jpg (แนะนำรูปสี่เหลี่ยมจัตุรัส 600x600 px ขึ้นไป)
+     ถ้าไม่มีไฟล์ เว็บจะซ่อนช่องรูปให้เอง ไม่ขึ้นไอคอนรูปแตก
+     ตั้งเป็น null ถ้าไม่อยากแสดงรูปเลย                              */
+  photo: "assets/profile.jpg",
+
   name:   { en: "Bongkarn Jongmee", th: "บงการ จงมี" },
   nameEn: { en: "บงการ จงมี",        th: "Bongkarn Jongmee" },
   title: {

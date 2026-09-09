@@ -215,3 +215,19 @@ a:hover { text-decoration: underline; }
   margin: 12px 0 5px; padding-left: 1px;
 }
 .ai-block { margin-top: 4px; }
+
+/* ---------- รูปโปรไฟล์ ---------- */
+.avatar-wrap { margin: 0 0 16px; }
+.avatar {
+  width: 108px; height: 108px;
+  border-radius: 50%;
+  object-fit: cover;          /* รูปไม่ยืดผิดสัดส่วน ต่อให้ไฟล์ไม่ใช่จัตุรัส */
+  object-position: center 20%; /* เลื่อนกรอบขึ้นนิด ใบหน้าจะอยู่กลางวงพอดี */
+  display: block;
+  border: 3px solid var(--sheet-bg);
+  box-shadow: 0 0 0 1px var(--line), 0 4px 14px rgba(0,0,0,.12);
+}
+@media print {
+  .avatar { width: 84px; height: 84px; box-shadow: none; border-color: #fff; }
+  .avatar-wrap { margin-bottom: 12px; }
+}
