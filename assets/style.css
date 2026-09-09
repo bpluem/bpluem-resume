@@ -222,7 +222,7 @@ a:hover { text-decoration: underline; }
 .avatar-wrap { margin: 0 0 16px; }
 .avatar {
   margin: 0 auto;             /* จัดรูปให้อยู่กึ่งกลางแถบซ้าย */
-  width: 108px; height: 108px;
+  width: 140px; height: 140px;
   border-radius: 50%;
   object-fit: cover;          /* รูปไม่ยืดผิดสัดส่วน ต่อให้ไฟล์ไม่ใช่จัตุรัส */
   object-position: center 20%; /* เลื่อนกรอบขึ้นนิด ใบหน้าจะอยู่กลางวงพอดี */
@@ -262,7 +262,7 @@ body.compact .side { padding-top: 26px; }
 body.compact .side-block { margin-top: 18px; }
 body.compact .skill-group { margin-bottom: 9px; }
 body.compact .tag { font-size: 11px; padding: 2px 7px; }
-body.compact .avatar { width: 62px; height: 62px; border-width: 2px; }
+body.compact .avatar { width: 72px; height: 72px; border-width: 2px; }
 body.compact .avatar-wrap { margin-bottom: 9px; }
 body.compact .name { font-size: 21px; }
 body.compact .tagline { display: none; }
