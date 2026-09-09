@@ -1,81 +1,81 @@
-# Resume Site
+# Bongkarn Jongmee — Front-End Developer (Web & Mobile) · QA Tester
 
-เว็บ resume แบบ static (HTML/CSS/JS ล้วน) ไม่มี build step ไม่มี dependency
-เปิดไฟล์ `index.html` ด้วยเบราว์เซอร์ก็ใช้งานได้เลย
+🔗 **[View the full resume →](https://bpluem.github.io/bpluem-resume/)**  ·  Available in English and ไทย
 
-## แก้ข้อมูลของตัวเอง
+Front-end mobile developer with 3+ years of professional experience building production
+Flutter applications for enterprise, e-commerce, and government clients. Owns features
+end to end — UI and shared design systems, REST API integration, authentication and token
+refresh, role-based access control, localization, and testing on physical devices.
 
-แก้ไฟล์เดียว: [`data/resume.js`](data/resume.js)
-ทุกหัวข้อ (ชื่อ, ติดต่อ, ทักษะ, ประสบการณ์, ผลงาน, การศึกษา) อยู่ในไฟล์นั้นทั้งหมด
-แก้เสร็จกด refresh ในเบราว์เซอร์ก็เห็นผลทันที
+Also serves as a QA tester for the team, writing test plans and test cases and tracking
+defects across the SDLC. Currently extending into backend work on a multi-tenant
+construction-management platform (Go, PostgreSQL), owning requirements, schema and API
+design, review, and verification with an AI-assisted development workflow.
 
-หัวข้อไหนไม่อยากแสดง — ลบ array นั้นทิ้ง หรือทำให้เป็น `[]` ได้เลย ระบบจะข้ามให้เอง
+📍 Nonthaburi, Thailand · ✉️ [mister.bongkarn@gmail.com](mailto:mister.bongkarn@gmail.com)
 
-## ดูหน้าเว็บบนเครื่อง
+---
 
-```bash
-# วิธีที่ 1: เปิดไฟล์ตรงๆ
-open index.html
+## Skills
 
-# วิธีที่ 2: รันเซิร์ฟเวอร์เล็กๆ (เหมือนตอนอยู่บนเว็บจริงมากกว่า)
-npx serve .
-```
+**Core** — used in production daily
+`Dart` `Flutter` `Flutter Web` `GetX` `Dio` `REST API integration` `JWT & token refresh`
+`Auth & RBAC` `Design systems` `Responsive UI` `Localization (i18n)` `Widget & unit testing`
+`Manual QA / test plans` `Git / GitHub` `Figma hand-off`
 
-## บันทึกเป็น PDF
+**Working** — shipped real work with
+`Go (chi, pgx, sqlc)` `PostgreSQL` `MySQL` `TypeScript` `React` `HTML / CSS` `Tailwind`
+`Docker` `Keycloak` `Insomnia / Postman` `GitHub Actions` `Database migrations`
+`API contract design` `Swagger / OpenAPI`
 
-กดปุ่ม **PDF** มุมขวาบน (หรือ `Cmd + P`) แล้วเลือกปลายทางเป็น "Save as PDF"
-หน้าเว็บมี print stylesheet อยู่แล้ว — ตอนพิมพ์จะบังคับเป็นโหมดสว่าง ขนาด A4 และซ่อนปุ่มต่างๆ ให้อัตโนมัติ
+**Familiar** — can work with, still growing
+`Python` `Next.js` `Security review basics` `Android tooling (adb)` `Clean Architecture` `Idempotency`
 
-## ขึ้น GitHub Pages
+---
 
-1. สร้าง repo ว่างบน GitHub (public)
-2. ในโฟลเดอร์นี้:
-   ```bash
-   git add .
-   git commit -m "Add resume site"
-   git branch -M main
-   git remote add origin https://github.com/<username>/<repo>.git
-   git push -u origin main
-   ```
-3. บน GitHub: **Settings → Pages → Source = Deploy from a branch → Branch = main / (root) → Save**
-4. รอ 1-2 นาที เว็บจะขึ้นที่ `https://<username>.github.io/<repo>/`
+## Experience
 
+| Role | Company | Period |
+|---|---|---|
+| Front-End Developer (Web & Mobile) | Techwave International Co., Ltd. | May 2023 – Present |
+| QA Tester *(concurrent role)* | Techwave International Co., Ltd. | Apr 2024 – Present |
+| Full Stack Web Developer *(internship)* | Khunying Long Athakravisunthorn Learning Resources Center | Apr – Jun 2021 |
 
-## เก็บเวอร์ชันไว้เทียบความก้าวหน้า
+---
 
-ใช้ **tag** เป็นหมุดเวอร์ชัน (ถาวร แก้ไม่ได้) + **git worktree** เปิดเวอร์ชันเก่าเป็นโฟลเดอร์แยกไว้ดูคู่กับของใหม่
+## Selected Projects
 
-```bash
-# บันทึกเวอร์ชันใหม่ (ปัก tag + สร้างโฟลเดอร์ + push tag ขึ้น GitHub)
-./scripts/snapshot.sh v2 "ใส่ข้อมูลจริงแล้ว"
+### ConstructQ — Construction Quality Management Platform · 2026 – Present
+Multi-tenant B2B platform for construction quality inspection: Flutter mobile app, web
+console, and a Go backend, with 6+ user roles each having their own permissions, menus,
+and dashboards.
 
-# เปิดเว็บ 2 เวอร์ชันเทียบกันในเบราว์เซอร์ พร้อมสรุปว่าไฟล์ไหนต่างกันบ้าง
-./scripts/compare.sh v1 main
-```
+`Flutter` `GetX` `Dio` `Go (chi, pgx, sqlc)` `PostgreSQL` `Keycloak` `Docker`
 
-เวอร์ชันเก่าจะอยู่ที่ `../resume-versions/<ชื่อเวอร์ชัน>/` (นอกโฟลเดอร์โปรเจค เพื่อไม่ให้ปนกับไฟล์งาน)
+- Rebuilt the role-based dashboard across 5 roles through a planned 7-phase migration — 3 shared widgets and 15 cards, with the suite at 302 passing tests.
+- Found a risk-level mapping bug (`h/m/l` vs the API's `high/medium/low`) that silently rendered every project as "low risk" on the executive dashboard.
+- Closed 18 tracker-reported defects across two cycles, each verified on a physical Android device.
+- Designed and delivered a menu-management module: a self-referencing `menu_groups` table, 7 admin endpoints, and a migration that backfilled 31 modules into 11 groups.
+- Closed two self-lockout paths and replaced a per-item cycle check with whole-resulting-tree validation.
 
-**คำสั่งที่ควรรู้**
+### Keyper — Condo Management System · personal project
+Web system for condominium administration: units, leases, meter readings, billing, and
+payment collection. Requirements and architecture complete; implementation starting.
 
-| ต้องการ | คำสั่ง |
-|---|---|
-| ดูว่ามีเวอร์ชันอะไรบ้าง | `git tag -n1` |
-| ดูว่าเปิดโฟลเดอร์เวอร์ชันไหนไว้บ้าง | `git worktree list` |
-| ดูว่า 2 เวอร์ชันต่างกันตรงไหน | `git diff v1 v2 -- data/resume.js` |
-| เปิดเวอร์ชันเก่าที่ยังไม่มีโฟลเดอร์ | `git worktree add ../resume-versions/v2 v2` |
-| ลบโฟลเดอร์เวอร์ชันที่ไม่ใช้แล้ว | `git worktree remove ../resume-versions/v2` |
+`Go` `PostgreSQL` `Next.js (TypeScript)` `Oracle Cloud (ARM)`
 
-⚠️ **ห้ามลบโฟลเดอร์ใน `resume-versions/` ด้วยการลากลงถังขยะ** — git จะยังจำว่ามีโฟลเดอร์นั้นอยู่และงงในภายหลัง
-ให้ใช้ `git worktree remove <path>` เสมอ (ถ้าเผลอลบไปแล้ว แก้ด้วย `git worktree prune`)
+- Wrote the requirement specification independently and revised it after finding four domain flaws in the first draft — including billing that had to be tied to the unit rather than the lease, and per-day utility proration across tenancy changes.
 
-การลบ worktree ไม่ได้ลบเวอร์ชันทิ้ง — tag ยังอยู่ครบ เปิดใหม่เมื่อไหร่ก็ได้
+### Also
+Smart City / Municipal Services App · Boonplook (agricultural e-commerce) · Booking System ·
+Tarnas One Solution · LUXQ App · Smart Government App · Appraisal & Portfolio systems
 
-## โครงสร้างไฟล์
+---
 
-| ไฟล์ | หน้าที่ |
-|---|---|
-| `data/resume.js` | ข้อมูล resume ทั้งหมด — **แก้ที่นี่** |
-| `index.html` | โครงหน้าเว็บ + โหลดฟอนต์ |
-| `assets/style.css` | สไตล์ทั้งหมด รวมโหมดมืดและโหมดพิมพ์ (เปลี่ยนสีธีมที่ตัวแปร `--accent`) |
-| `assets/main.js` | โค้ดที่แปลงข้อมูลเป็น HTML + ปุ่มโหมดมืด/PDF |
-| `.nojekyll` | บอก GitHub Pages ว่าไม่ต้องประมวลผลด้วย Jekyll |
+## Education
+
+**Bachelor of Engineering, Computer Engineering** — Prince of Songkla University, Hat Yai Campus (2016 – 2022)
+
+---
+
+<sub>เว็บนี้เป็น static site ไม่มี build step — วิธีแก้ข้อมูลและวิธีเก็บเวอร์ชันอยู่ใน [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)</sub>
