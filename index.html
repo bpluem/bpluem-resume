@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume — ชื่อ นามสกุล</title>
+  <meta name="description" content="Resume / ประวัติย่อ ของ ชื่อ นามสกุล — Mobile & Backend Developer" />
+
+  <!-- favicon แบบฝังในหน้าเลย ไม่ต้องมีไฟล์รูปแยก -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6df6'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='700' fill='white' text-anchor='middle'%3ECV%3C/text%3E%3C/svg%3E" />
+
+  <!-- ฟอนต์ไทย+อังกฤษ อ่านง่ายทั้งบนจอและตอนพิมพ์ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- ปุ่มลอยมุมขวาบน: สลับโหมดมืด และสั่งพิมพ์เป็น PDF (ไม่ถูกพิมพ์ลงกระดาษ) -->
+  <div class="floating-actions no-print">
+    <button id="theme-toggle" type="button" title="สลับโหมดสว่าง/มืด" aria-label="สลับโหมดสว่าง/มืด">
+      <span id="theme-icon">🌙</span>
+    </button>
+    <button id="print-btn" type="button" title="บันทึกเป็น PDF">
+      <span>⬇︎</span> PDF
+    </button>
+  </div>
+
+  <!-- เนื้อหาทั้งหมดถูกสร้างด้วย JavaScript จากข้อมูลใน data/resume.js -->
+  <main id="resume" class="sheet" aria-live="polite"></main>
+
+  <noscript>
+    <p style="padding:2rem;text-align:center">
+      หน้านี้ต้องเปิด JavaScript เพื่อแสดงข้อมูล resume
+    </p>
+  </noscript>
+
+  <script src="data/resume.js"></script>
+  <script src="assets/main.js"></script>
+</body>
+</html>
