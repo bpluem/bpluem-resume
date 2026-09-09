@@ -221,6 +221,7 @@ a:hover { text-decoration: underline; }
 /* ---------- รูปโปรไฟล์ ---------- */
 .avatar-wrap { margin: 0 0 16px; }
 .avatar {
+  margin: 0 auto;             /* จัดรูปให้อยู่กึ่งกลางแถบซ้าย */
   width: 108px; height: 108px;
   border-radius: 50%;
   object-fit: cover;          /* รูปไม่ยืดผิดสัดส่วน ต่อให้ไฟล์ไม่ใช่จัตุรัส */
