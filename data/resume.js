@@ -53,13 +53,14 @@ window.RESUME = {
     { value: "mister.bongkarn@gmail.com", href: "mailto:mister.bongkarn@gmail.com", icon: "mail" },
     { value: { en: "Nonthaburi, Thailand", th: "นนทบุรี, ประเทศไทย" }, href: null, icon: "pin" },
     { value: "github.com/bpluem", href: "https://github.com/bpluem", icon: "github" },
-    /* URL จริงมีอักษรไทยที่ถูกเข้ารหัสไว้ (%E0%B8...) — ต้องใช้แบบเข้ารหัสใน href
-       ส่วนข้อความที่แสดงใช้ภาษาไทยปกติเพื่อให้อ่านออก */
-    {
-      value: "linkedin.com/in/บงการ-จงมี",
-      href: "https://www.linkedin.com/in/%E0%B8%9A%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3-%E0%B8%88%E0%B8%87%E0%B8%A1%E0%B8%B5-500221414/",
-      icon: "link",
-    },
+    /* LinkedIn — ปิดไว้ชั่วคราว เอาเครื่องหมาย // ออกเพื่อเปิดใช้อีกครั้ง
+       (URL จริงมีอักษรไทยที่ถูกเข้ารหัสไว้ %E0%B8... ต้องใช้แบบเข้ารหัสใน href
+        ส่วนข้อความที่แสดงใช้ภาษาไทยปกติเพื่อให้อ่านออก) */
+    // {
+    //   value: "linkedin.com/in/บงการ-จงมี",
+    //   href: "https://www.linkedin.com/in/%E0%B8%9A%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3-%E0%B8%88%E0%B8%87%E0%B8%A1%E0%B8%B5-500221414/",
+    //   icon: "link",
+    // },
   ],
 
   /* ---------- แนะนำตัว (1 รายการ = 1 ย่อหน้า) ---------- */
