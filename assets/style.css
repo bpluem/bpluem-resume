@@ -305,4 +305,7 @@ body.compact .side .tag {
 body.compact .side .tag::after { content: " · "; color: var(--text-soft); }
 body.compact .side .tag:last-child::after { content: ""; }
 body.compact .side-block { margin-top: 14px; }
+/* อีเมลห้ามตัดกลางคำในฉบับ PDF (แถบซ้ายแคบ เคยขึ้นเป็น "gmail.c / om") */
+body.compact .contact-list li { font-size: 11.5px; }
+body.compact .contact-list .val { white-space: nowrap; }
 body.compact .skill-group { margin-bottom: 7px; }

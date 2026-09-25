@@ -74,8 +74,8 @@ window.RESUME = {
       th: "ทำหน้าที่ QA tester ให้ทีมควบคู่ไปด้วย เขียนแผนทดสอบและ test case พร้อมติดตามบั๊กตลอดวงจรการพัฒนา นิสัยจากงาน QA ติดมาถึงงานพัฒนาด้วย คือตรวจสอบพฤติกรรมจากแอปที่รันอยู่จริงและ API จริงเสมอ ไม่เชื่อเอกสารเพียงอย่างเดียว",
     },
     {
-      en: "Currently extending into backend work on a multi-tenant construction-management platform (Go, PostgreSQL), owning requirements, schema and API design, review, and verification with an AI-assisted development workflow.",
-      th: "ปัจจุบันกำลังขยายไปทางฝั่ง backend ในระบบบริหารงานก่อสร้างแบบ multi-tenant (Go, PostgreSQL) รับผิดชอบตั้งแต่การเก็บ requirement ออกแบบ schema และ API ไปจนถึงการรีวิวและตรวจสอบผลลัพธ์ โดยใช้กระบวนการพัฒนาที่มี AI ช่วย",
+      en: "Currently extending into backend work on a multi-tenant construction quality-inspection platform (Go, PostgreSQL), owning requirements, schema and API design, review, and verification with an AI-assisted development workflow.",
+      th: "ปัจจุบันกำลังขยายไปทางฝั่ง backend ในแพลตฟอร์มตรวจสอบคุณภาพงานก่อสร้างแบบ multi-tenant (Go, PostgreSQL) รับผิดชอบตั้งแต่การเก็บ requirement ออกแบบ schema และ API ไปจนถึงการรีวิวและตรวจสอบผลลัพธ์ โดยใช้กระบวนการพัฒนาที่มี AI ช่วย",
     },
   ],
 
@@ -100,7 +100,7 @@ window.RESUME = {
       items: [
         "Go (chi, pgx, sqlc)", "PostgreSQL", "MySQL",
         "TypeScript", "React", "HTML / CSS", "Tailwind",
-        "Docker", "Keycloak", "Insomnia / Postman",
+        "Widgetbook", "Docker", "Keycloak", "Insomnia / Postman",
         "GitHub Actions", "Database migrations",
         "API contract design", "Swagger / OpenAPI",
       ],
@@ -135,6 +135,11 @@ window.RESUME = {
           key: true,
           en: "Design and develop mobile applications with Flutter and Dart, from UI implementation to release-candidate testing.",
           th: "ออกแบบและพัฒนาแอปมือถือด้วย Flutter และ Dart ตั้งแต่ลงมือทำ UI จนถึงทดสอบเวอร์ชันก่อนปล่อยจริง",
+        },
+        {
+          key: true,
+          en: "Shipped Boonplook, an agricultural e-commerce app, to the App Store and Google Play.",
+          th: "ส่งแอปอีคอมเมิร์ซการเกษตร Boonplook ขึ้น App Store และ Google Play",
         },
         {
           en: "Build and maintain reusable UI components and a shared design system used across the app.",
@@ -239,12 +244,13 @@ window.RESUME = {
           bullets: [
             {
               key: true,
-              en: "Rebuilt the role-based dashboard to a new spec across 5 roles via a planned 7-phase migration — 3 shared widgets and 15 cards, with the suite at 302 passing tests.",
-              th: "รื้อแดชบอร์ดตามบทบาทใหม่ทั้งหมด 5 บทบาท ตามแผนย้าย 7 เฟส ได้ widget กลาง 3 ตัวและการ์ด 15 ใบ โดยชุดทดสอบผ่านครบ 302 เคส",
-            },
-            {
-              en: "Audited every dashboard card against the live API for all roles and produced the gap list handed to the backend team.",
-              th: "ตรวจการ์ดบนแดชบอร์ดทุกใบเทียบกับ API จริงครบทุกบทบาท แล้วสรุปรายการช่องว่างส่งให้ทีม backend",
+              /* ฉบับกระชับสำหรับ PDF 1 หน้า (เว็บยังใช้ข้อความเต็มด้านล่าง) */
+              short: {
+                en: "Rebuilt the role-based dashboard to a new spec across 5 roles via a planned 7-phase migration — 3 shared widgets and 15 cards, with the suite at 302 passing tests.",
+                th: "รื้อแดชบอร์ดตามบทบาทใหม่ทั้งหมด 5 บทบาท ตามแผนย้าย 7 เฟส ได้ widget กลาง 3 ตัวและการ์ด 15 ใบ โดยชุดทดสอบผ่านครบ 302 เคส",
+              },
+              en: "Rebuilt the role-based dashboard to a new spec across 5 roles via a planned 7-phase migration — 3 shared widgets and 15 cards, with the suite at 302 passing tests — then audited every card against the live API for all roles and handed the gap list to the backend team.",
+              th: "รื้อแดชบอร์ดตามบทบาทใหม่ทั้งหมด 5 บทบาท ตามแผนย้าย 7 เฟส ได้ widget กลาง 3 ตัวและการ์ด 15 ใบ โดยชุดทดสอบผ่านครบ 302 เคส จากนั้นตรวจการ์ดทุกใบเทียบกับ API จริงครบทุกบทบาท แล้วสรุปรายการช่องว่างส่งให้ทีม backend",
             },
             {
               key: true,
@@ -258,20 +264,16 @@ window.RESUME = {
                 th: "ปิดบั๊กที่ถูกแจ้ง 18 ข้อใน 2 รอบ ตรวจผลบนเครื่อง Android จริงทุกข้อ",
               },
               key: true,
-              en: "Closed 18 tracker-reported defects across two cycles — OTP entry, resend countdown, leave-confirmation guard, EXIF image rotation, stale image cache — each verified on a physical Android device.",
-              th: "ปิดบั๊กที่ถูกแจ้งในระบบติดตาม 18 ข้อ ภายใน 2 รอบ ทั้งช่องกรอก OTP, ตัวนับเวลาขอรหัสใหม่, กันผู้ใช้ออกจากหน้าโดยไม่ตั้งใจ, รูปเอียงจาก EXIF และแคชรูปเก่าค้าง โดยตรวจผลบนเครื่อง Android จริงทุกข้อ",
-            },
-            {
-              en: "Rebuilt the OTP field from four separate boxes into a single overlaid input, restoring oneTimeCode autofill and continuous backspace that the split-field pattern breaks on mobile keyboards.",
-              th: "เปลี่ยนช่อง OTP จาก 4 ช่องแยกเป็นช่องเดียวที่วางทับด้านบน ทำให้ autofill รหัสจาก SMS และการกดลบย้อนต่อเนื่องกลับมาใช้ได้ ซึ่งรูปแบบช่องแยกทำให้คีย์บอร์ดมือถือใช้ไม่ได้",
+              en: "Closed 18 tracker-reported defects across two cycles — resend countdown, leave-confirmation guard, EXIF image rotation, stale image cache, and an OTP field rebuilt from four boxes into a single overlaid input to restore SMS autofill and continuous backspace — each verified on a physical Android device.",
+              th: "ปิดบั๊กที่ถูกแจ้งในระบบติดตาม 18 ข้อ ภายใน 2 รอบ ทั้งตัวนับเวลาขอรหัสใหม่, กันผู้ใช้ออกจากหน้าโดยไม่ตั้งใจ, รูปเอียงจาก EXIF, แคชรูปเก่าค้าง และเปลี่ยนช่อง OTP จาก 4 ช่องแยกเป็นช่องเดียวที่วางทับด้านบน ทำให้ autofill รหัสจาก SMS และการกดลบย้อนต่อเนื่องกลับมาใช้ได้ โดยตรวจผลบนเครื่อง Android จริงทุกข้อ",
             },
             {
               en: "Diagnosed a keyboard-dismiss bug caused by swapping widget types on state change (Flutter disposes the element subtree, taking the TextField with it) and added a regression test asserting element identity across state changes.",
               th: "หาสาเหตุอาการคีย์บอร์ดหลุดเวลาพิมพ์ ซึ่งเกิดจากการสลับชนิด widget ตอน state เปลี่ยน (Flutter ทิ้ง element ทั้งกิ่ง พา TextField หายไปด้วย) แล้วเพิ่มเทสกันปัญหาซ้ำที่ตรวจว่า element ยังเป็นตัวเดิม",
             },
             {
-              en: "Worked on the predecessor app, Solution One ERP (QC mobile): a 5-step project workflow (locations, members, documents, WBS, completion) on a centralized Dio service with auth headers, Accept-Language, and automatic token refresh on HTTP 401, plus permission-based menus, document upload, maps, and charts.",
-              th: "เคยพัฒนาแอปรุ่นก่อนหน้าชื่อ Solution One ERP (แอป QC บนมือถือ) มี workflow โครงการ 5 ขั้น (สถานที่ สมาชิก เอกสาร WBS และปิดงาน) วางโครงบน Dio service กลางที่ใส่ header ยืนยันตัวตนและ Accept-Language ให้เอง และต่ออายุ token อัตโนมัติเมื่อเจอ HTTP 401 พร้อมเมนูตามสิทธิ์ อัปโหลดเอกสาร แผนที่ และกราฟ",
+              en: "Developed and maintained the predecessor app, Solution One ERP (QC mobile): a 5-step project workflow (locations, members, documents, WBS, completion) on a centralized Dio service with auth headers, Accept-Language, and automatic token refresh on HTTP 401, plus permission-based menus, document upload, maps, and charts.",
+              th: "พัฒนาและดูแลแอปรุ่นก่อนหน้าชื่อ Solution One ERP (แอป QC บนมือถือ) มี workflow โครงการ 5 ขั้น (สถานที่ สมาชิก เอกสาร WBS และปิดงาน) วางโครงบน Dio service กลางที่ใส่ header ยืนยันตัวตนและ Accept-Language ให้เอง และต่ออายุ token อัตโนมัติเมื่อเจอ HTTP 401 พร้อมเมนูตามสิทธิ์ อัปโหลดเอกสาร แผนที่ และกราฟ",
             },
             {
               en: "Built subscription, organization, and payment flows (payment-method selection, payment-slip upload), with idempotent requests via X-Idempotency-Key, token refresh, and per-environment configuration (dev / pre-production / production).",
@@ -280,10 +282,6 @@ window.RESUME = {
             {
               en: "Built mobile_design_system, an internal Flutter package: ThemeExtension-based light/dark themes and shared buttons, text fields, bottom sheets, and loading widgets, developed in Widgetbook and linted with very_good_analysis.",
               th: "สร้าง mobile_design_system ซึ่งเป็น Flutter package ภายใน มีธีมสว่าง/มืดที่ใช้ ThemeExtension และ component กลาง เช่น ปุ่ม ช่องกรอกข้อความ bottom sheet และตัวแสดงการโหลด พัฒนาบน Widgetbook และตรวจโค้ดด้วย very_good_analysis",
-            },
-            {
-              en: "Delivered full TH/EN localization including locale-aware trend and duration formatting.",
-              th: "ทำระบบ 2 ภาษาครบทั้งแอป รวมถึงการแสดงแนวโน้มและระยะเวลาให้ถูกตามรูปแบบของแต่ละภาษา",
             },
           ],
         },
