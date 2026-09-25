@@ -212,7 +212,8 @@ window.RESUME = {
   /* ---------- โปรเจค ----------
      featured: true = แสดงรายละเอียดเต็มพร้อม bullet
      ที่เหลือ      = การ์ดสั้น
-     TODO: โปรเจคเก่าหลายตัวยังไม่มีปี/บทบาท/ตัวเลข — เติมได้จะน่าเชื่อถือขึ้นมาก */
+     TODO: โปรเจคย่อยยังไม่มีปี/ตัวเลข (จำนวนผู้ใช้, ขนาดทีม) — ห้ามเดาเอง รอข้อมูลจริง
+     ที่มาข้อมูลการ์ดย่อย: ~/Downloads/project_experience_resume_reference.md (2026-09-25) */
   projects: [
     {
       name: "ConstructQ — Construction Quality Management Platform",
@@ -223,15 +224,15 @@ window.RESUME = {
       period: { en: "2026 – Present", th: "2569 – ปัจจุบัน" },
       featured: true,
       description: {
-        en: "Multi-tenant B2B platform for construction quality inspection: Flutter mobile app, web console, and a Go backend. 6+ user roles (inspector, QC manager, PM, subcontractor, CEO, org admin) with per-role permissions, menus, and dashboards.",
-        th: "แพลตฟอร์ม B2B แบบ multi-tenant สำหรับตรวจสอบคุณภาพงานก่อสร้าง ประกอบด้วยแอป Flutter เว็บคอนโซล และ backend ภาษา Go รองรับผู้ใช้ 6 บทบาทขึ้นไป (ผู้ตรวจ, QC manager, PM, ผู้รับเหมาช่วง, ผู้บริหาร, แอดมินองค์กร) โดยแต่ละบทบาทมีสิทธิ์ เมนู และแดชบอร์ดของตัวเอง",
+        en: "Current main project. Multi-tenant B2B platform for construction quality inspection — a redesign of the earlier Solution One ERP QC app — with a Flutter mobile app, web console, and a Go backend. 6+ user roles (inspector, QC manager, PM, subcontractor, CEO, org admin) with per-role permissions, menus, and dashboards.",
+        th: "โปรเจคหลักที่ทำอยู่ปัจจุบัน แพลตฟอร์ม B2B แบบ multi-tenant สำหรับตรวจสอบคุณภาพงานก่อสร้าง ซึ่ง redesign มาจากแอป QC เดิมชื่อ Solution One ERP ประกอบด้วยแอป Flutter เว็บคอนโซล และ backend ภาษา Go รองรับผู้ใช้ 6 บทบาทขึ้นไป (ผู้ตรวจ, QC manager, PM, ผู้รับเหมาช่วง, ผู้บริหาร, แอดมินองค์กร) โดยแต่ละบทบาทมีสิทธิ์ เมนู และแดชบอร์ดของตัวเอง",
       },
       /* ฉบับกระชับสำหรับ PDF 1 หน้า */
       descriptionShort: {
         en: "Multi-tenant B2B platform for construction quality inspection: Flutter app, web console, and Go backend, with 6+ roles each having their own permissions and dashboards.",
         th: "แพลตฟอร์ม B2B แบบ multi-tenant สำหรับตรวจสอบคุณภาพงานก่อสร้าง มีแอป Flutter เว็บคอนโซล และ backend ภาษา Go รองรับ 6 บทบาทขึ้นไป แต่ละบทบาทมีสิทธิ์และแดชบอร์ดของตัวเอง",
       },
-      tags: ["Flutter", "GetX", "Dio", "Go (chi, pgx, sqlc)", "PostgreSQL", "Keycloak", "Docker"],
+      tags: ["Flutter", "GetX", "Dio", "Widgetbook", "Go (chi, pgx, sqlc)", "PostgreSQL", "Keycloak", "Docker"],
       groups: [
         {
           title: { en: "Mobile", th: "ฝั่งมือถือ" },
@@ -267,6 +268,18 @@ window.RESUME = {
             {
               en: "Diagnosed a keyboard-dismiss bug caused by swapping widget types on state change (Flutter disposes the element subtree, taking the TextField with it) and added a regression test asserting element identity across state changes.",
               th: "หาสาเหตุอาการคีย์บอร์ดหลุดเวลาพิมพ์ ซึ่งเกิดจากการสลับชนิด widget ตอน state เปลี่ยน (Flutter ทิ้ง element ทั้งกิ่ง พา TextField หายไปด้วย) แล้วเพิ่มเทสกันปัญหาซ้ำที่ตรวจว่า element ยังเป็นตัวเดิม",
+            },
+            {
+              en: "Worked on the predecessor app, Solution One ERP (QC mobile): a 5-step project workflow (locations, members, documents, WBS, completion) on a centralized Dio service with auth headers, Accept-Language, and automatic token refresh on HTTP 401, plus permission-based menus, document upload, maps, and charts.",
+              th: "เคยพัฒนาแอปรุ่นก่อนหน้าชื่อ Solution One ERP (แอป QC บนมือถือ) มี workflow โครงการ 5 ขั้น (สถานที่ สมาชิก เอกสาร WBS และปิดงาน) วางโครงบน Dio service กลางที่ใส่ header ยืนยันตัวตนและ Accept-Language ให้เอง และต่ออายุ token อัตโนมัติเมื่อเจอ HTTP 401 พร้อมเมนูตามสิทธิ์ อัปโหลดเอกสาร แผนที่ และกราฟ",
+            },
+            {
+              en: "Built subscription, organization, and payment flows (payment-method selection, payment-slip upload), with idempotent requests via X-Idempotency-Key, token refresh, and per-environment configuration (dev / pre-production / production).",
+              th: "ทำ flow สมัครแพ็กเกจ องค์กร และการชำระเงิน (เลือกช่องทางจ่าย อัปโหลดสลิป) โดยส่ง request แบบกันยิงซ้ำด้วย X-Idempotency-Key มีระบบต่ออายุ token และแยกค่าตั้งตามสภาพแวดล้อม (dev / pre-production / production)",
+            },
+            {
+              en: "Built mobile_design_system, an internal Flutter package: ThemeExtension-based light/dark themes and shared buttons, text fields, bottom sheets, and loading widgets, developed in Widgetbook and linted with very_good_analysis.",
+              th: "สร้าง mobile_design_system ซึ่งเป็น Flutter package ภายใน มีธีมสว่าง/มืดที่ใช้ ThemeExtension และ component กลาง เช่น ปุ่ม ช่องกรอกข้อความ bottom sheet และตัวแสดงการโหลด พัฒนาบน Widgetbook และตรวจโค้ดด้วย very_good_analysis",
             },
             {
               en: "Delivered full TH/EN localization including locale-aware trend and duration formatting.",
@@ -315,94 +328,41 @@ window.RESUME = {
       ],
     },
     {
-      name: "Keyper — Condo Management System",
-      role: { en: "Personal project · full-stack", th: "โปรเจคส่วนตัว · full-stack" },
-      period: { en: "2026", th: "2569" },
-      featured: true,
-      description: {
-        en: "Self-directed web system for condominium administration: units, leases, meter readings, billing, and payment collection. Requirements and architecture complete; implementation starting.",
-        th: "ระบบเว็บสำหรับบริหารคอนโดที่ทำเอง ครอบคลุมห้องชุด สัญญาเช่า การจดมิเตอร์ การออกบิล และการเก็บเงิน ตอนนี้ requirement และสถาปัตยกรรมเสร็จแล้ว กำลังเริ่มลงมือเขียน",
-      },
-      descriptionShort: {
-        en: "Web system for condominium administration: units, leases, meter readings, billing, and payment collection.",
-        th: "ระบบเว็บบริหารคอนโด ครอบคลุมห้องชุด สัญญาเช่า การจดมิเตอร์ การออกบิล และการเก็บเงิน",
-      },
-      tags: ["Go", "PostgreSQL", "Next.js (TypeScript)", "Oracle Cloud (ARM)"],
-      groups: [
-        {
-          title: null,
-          bullets: [
-            {
-              /* ฉบับกระชับสำหรับ PDF 1 หน้า (เว็บยังใช้ข้อความเต็มด้านล่าง) */
-              short: {
-                en: "Wrote the requirement specification independently and revised it after finding four domain flaws in the first draft, including billing that had to be tied to the unit rather than the lease.",
-                th: "เขียนสเปก requirement เองทั้งหมด แล้วรื้อใหม่หลังพบข้อผิดพลาดเชิงธุรกิจ 4 จุดในร่างแรก เช่น บิลต้องผูกกับห้องไม่ใช่สัญญาเช่า",
-              },
-              key: true,
-              en: "Wrote the requirement specification independently and revised it after finding four domain flaws in the first draft — billing had to be tied to the unit rather than the lease, utilities needed per-day proration across tenancy changes, water and electricity both needed per-unit meters, and resident data belonged at building scope.",
-              th: "เขียนสเปก requirement เองทั้งหมด แล้วรื้อใหม่หลังพบข้อผิดพลาดเชิงธุรกิจ 4 จุดในร่างแรก คือ บิลต้องผูกกับห้องไม่ใช่สัญญาเช่า, ค่าน้ำค่าไฟต้องคิดตามจำนวนวันเมื่อผู้เช่าเปลี่ยนกลางเดือน, ทั้งน้ำและไฟต้องมีมิเตอร์แยกรายห้อง และข้อมูลผู้พักอาศัยต้องอยู่ในระดับอาคาร",
-            },
-            {
-              en: "Drafted a production deployment plan targeting a free-tier ARM instance.",
-              th: "ร่างแผนขึ้นระบบจริงบนเครื่อง ARM ของ cloud ระดับฟรี",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "Smart City / Municipal Services App",
-      role: { en: "Flutter developer", th: "นักพัฒนา Flutter" },
-      description: {
-        en: "Municipal services app — citizen complaints, local tourism, announcements, and IoT services for smart poles.",
-        th: "แอปบริการเทศบาล ทั้งรับเรื่องร้องเรียน ข้อมูลท่องเที่ยวท้องถิ่น ประกาศจากเทศบาล และงาน IoT สำหรับเสาอัจฉริยะ",
-      },
-      tags: ["Flutter"],
-    },
-    {
       name: "Boonplook — Agricultural E-Commerce",
-      role: { en: "Flutter developer", th: "นักพัฒนา Flutter" },
+      /* วันปล่อยครั้งแรกจาก App Store = 24 ม.ค. 2025 (เช็ค 2026-09-25) */
+      role: { en: "Flutter mobile developer · completed, on App Store & Google Play (2025)", th: "นักพัฒนา Flutter ฝั่งมือถือ · เสร็จแล้ว ขึ้น App Store และ Google Play (2568)" },
       description: {
-        en: "Mobile e-commerce application built for farmers.",
-        th: "แอปอีคอมเมิร์ซบนมือถือสำหรับเกษตรกร",
+        en: "Completed mobile e-commerce app for farmers, released on both the App Store and Google Play: UI, REST API integration, authentication and token management, and state management.",
+        th: "แอปอีคอมเมิร์ซบนมือถือสำหรับเกษตรกร ทำเสร็จและขึ้นทั้ง App Store และ Google Play แล้ว ทำทั้ง UI การเชื่อมต่อ REST API ระบบยืนยันตัวตนและจัดการ token และการจัดการ state",
       },
-      tags: ["Flutter"],
+      tags: ["Flutter", "GetX", "Dio"],
     },
     {
-      name: "Booking System",
-      role: { en: "Developer", th: "นักพัฒนา" },
+      name: "Smart Government App",
+      role: { en: "Flutter mobile developer · in development", th: "นักพัฒนา Flutter ฝั่งมือถือ · กำลังพัฒนา" },
       description: {
-        en: "Real-time schedule availability and booking confirmation, with a management dashboard for reservations and reporting.",
-        th: "ระบบจองที่เช็คคิวว่างและยืนยันการจองแบบเรียลไทม์ พร้อมแดชบอร์ดจัดการการจองและออกรายงาน",
+        en: "Municipal services app — citizen complaints, local tourism, announcements, and IoT services for smart poles. Built UI and app flows, REST API integration, state management, and authentication / authorization per requirements.",
+        th: "แอปบริการเทศบาล ทั้งรับเรื่องร้องเรียน ข้อมูลท่องเที่ยวท้องถิ่น ประกาศจากเทศบาล และงาน IoT สำหรับเสาอัจฉริยะ ทำทั้ง UI และ flow ของแอป การเชื่อมต่อ REST API การจัดการ state และระบบยืนยันตัวตน/สิทธิ์ตาม requirement",
       },
-      tags: [],
+      tags: ["Flutter", "GetX", "Dio"],
     },
     {
-      name: "Tarnas One Solution",
-      role: { en: "Web developer", th: "นักพัฒนาเว็บ" },
+      name: "LUXQ App",
+      role: { en: "Flutter mobile developer · in development", th: "นักพัฒนา Flutter ฝั่งมือถือ · กำลังพัฒนา" },
       description: {
-        en: "Web application development for the Tarnas One Solution product.",
-        th: "พัฒนาเว็บแอปพลิเคชันให้ผลิตภัณฑ์ Tarnas One Solution",
+        en: "Flutter application in development: UI and app flows, REST API integration, state management, and authentication / authorization per requirements.",
+        th: "แอป Flutter ที่กำลังพัฒนา ทำทั้ง UI และ flow ของแอป การเชื่อมต่อ REST API การจัดการ state และระบบยืนยันตัวตน/สิทธิ์ตาม requirement",
       },
-      tags: [],
+      tags: ["Flutter", "GetX", "Dio"],
     },
     {
-      name: "LUXQ App · Smart Government App",
-      role: { en: "Flutter developer", th: "นักพัฒนา Flutter" },
+      name: "Tarnas One — Portfolio · Appraisal · Booking",
+      role: { en: "Front-end web developer · completed, in use", th: "นักพัฒนาเว็บฝั่ง front-end · เสร็จแล้ว ใช้งานจริงอยู่" },
       description: {
-        en: "Two Flutter applications currently in development.",
-        th: "แอป Flutter 2 ตัวที่กำลังพัฒนาอยู่",
+        en: "Completed web platform in active use at Tarnas One, with three core modules — portfolio management, employee appraisal, and booking (real-time availability, booking confirmation, and a management dashboard) — plus other internal company systems. Built UI and user flows and integrated REST APIs with the backend team.",
+        th: "แพลตฟอร์มเว็บที่ทำเสร็จแล้ว และบริษัท Tarnas One ใช้งานจริงอยู่ในปัจจุบัน มี 3 ระบบหลัก คือ จัดการผลงาน (portfolio) ประเมินพนักงาน และระบบจอง (เช็คคิวว่างและยืนยันการจองแบบเรียลไทม์ พร้อมแดชบอร์ดจัดการ) รวมถึงระบบภายในอื่นๆ ทำ UI และ user flow และเชื่อมต่อ REST API ร่วมกับทีม backend",
       },
-      tags: ["Flutter"],
-    },
-    {
-      name: "Appraisal System · Portfolio System · Internal Solutions",
-      role: { en: "Developer", th: "นักพัฒนา" },
-      description: {
-        en: "Employee performance appraisal, portfolio management, and internal company systems.",
-        th: "ระบบประเมินผลพนักงาน ระบบจัดการผลงาน และระบบภายในองค์กร",
-      },
-      tags: [],
+      tags: ["React", "Node.js", "REST API"],
     },
   ],
 
